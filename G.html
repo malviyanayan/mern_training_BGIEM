@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anshuls Program</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #preloader{
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #111111;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            display: flex;
+        }
+        
+        #preloader img{
+            width: 100px;
+        }
+        
+        #main-container{
+            background-color: #b1adb1;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="images/logo.jpg">
+        <h1>Anshul Bhai</h1>
+    </div>
+
+    <div id="main-container">
+        <div id="hero">
+            <h1>This is My Website</h1> 
+        </div>
+    </div>
+
+    <script>
+        let main = document.getElementById("main-container");
+        let preloader = document.getElementById("preloader");
+
+        function change(){
+            main.style.display = "flex";
+            preloader.style.display = "none";
+        }
+        
+        setTimeout(() => {
+            change();
+        }, 2000);
+    </script>
+</body>
+</html>
