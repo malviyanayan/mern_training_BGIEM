@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+        }
+
+        h1{
+            text-align: center;
+            padding-top: 20px;
+            font-size: 2.6rem;
+        }
+
+        #home{
+            width: 98%;
+            height: 80%;
+            margin: 20px auto;
+            /* background-color: blue; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition:  ease-in-out 2s;
+        }
+
+        #img{
+            width: 80%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .btn{
+            width: 100px;
+            height: 100px;
+            /* background-color: yellow; */
+        }
+
+        .btn:hover{
+            padding: 9px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Slider</h1>
+    <div id="home">
+        <img src="images/back.png" id="btn1" class="btn">
+        <img src="images/b1 (1).jpg" id="img">
+        <img src="images/arrow-right.png" id="btn2" class="btn">
+    </div>
+    
+    <script src="index.js">
+
+    </script>
+</body>
+</html>
