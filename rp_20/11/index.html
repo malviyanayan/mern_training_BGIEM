@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: #efeffe;
+        }
+
+        #hero{
+            margin: 30px auto;
+            border-radius: 20px 30px;
+            width: 38%;
+            height: 500px;
+            background-color: blueviolet;
+            color: #ffffff;
+            font-weight: 400;
+            font-family: sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hero > h2{
+            color: yellow;
+            font-size: 30px;
+        }
+
+        #hero>div{
+            display: flex;
+            gap: 10px;
+        }
+
+        #btn{
+            padding: 5px 10px;
+            background-color: blue;
+            color: #ffffff;
+            font-weight: 700;
+            border: none;
+        }
+        
+        #hero div > input{
+            border-radius: 7px;
+            font-size: 20px;
+            border: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div id="hero">
+        <h2>Weather Api</h2>
+        <div><input type="text" id="city"><input id="btn" type="button" value="Search"></div>
+        <div style="margin-top: 20px;">
+            <h3 id="temp">Temprature : </h3>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 id="mintemp">MinTemprature : </h3>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 id="maxtemp">MaxTemprature : </h3>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 id="ws">WindSpeed : </h3>
+        </div>
+    </div>
+
+
+    <script>
+        let apiKey = "ee2043d4ae8aaa6c9f94e1cab3bbbeb4";
+        
+        let callApi = async (city) => {
+            
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&apiKey=${apiKey}`;
+            const resp = await fetch(url);
+
+            return await resp.text(); // or resp.json() if JSON is expected
+
+        };
+        let datas ;
+
+        function getDatas(data){
+            datas = JSON.parse(data);
+            document.getElementById("temp").innerText = "Temprature : " + (parseInt(datas.main.temp)-273.15).toFixed(1) + " c";
+            document.getElementById("mintemp").innerText = "Min Temp : " + (parseInt(datas.main.temp_min)-273.15).toFixed(1)+ " c";
+            document.getElementById("maxtemp").innerText = "Max Temprature : " + (parseInt(datas.main.temp_max)-273.15).toFixed(1)+ " c";
+            document.getElementById("ws").innerText = "Max Temprature : " + parseInt(datas.wind.speed).toFixed(1)+ " km/s";
+        }
+
+
+        document.getElementById("btn").addEventListener('click', () => {
+            city = document.getElementById('city').value;
+            document.getElementById('city').value = "";
+            
+            callApi(city).then((data)=>{
+                getDatas(data);
+            }).catch((error)=>{
+                console.log(error);
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
